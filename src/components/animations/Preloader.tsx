@@ -17,7 +17,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   useEffect(() => {
     setMounted(true);
     const startTime = Date.now();
-    const duration = 2800;
+    const duration = 1200; // Faster preloader
     let rafId: number;
 
     const animate = () => {
@@ -33,8 +33,8 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         setPhase('reveal');
         setTimeout(() => {
           setPhase('exit');
-          setTimeout(onComplete, 800);
-        }, 600);
+          setTimeout(onComplete, 400); // Faster exit
+        }, 300); // Faster reveal hold
       }
     };
 

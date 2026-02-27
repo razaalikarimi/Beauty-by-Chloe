@@ -39,11 +39,11 @@ const RoomSection: React.FC<RoomSectionProps> = memo(({ room, index }) => {
         {
           clipPath: 'inset(0% 0% 0% 0%)',
           opacity: 1,
-          duration: 1.4,
+          duration: 1.2,
           ease: 'power3.inOut',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 75%',
+            start: 'top 95%', // Trigger much earlier when scrolling
             end: 'top 25%',
             toggleActions: 'play none none reverse',
           },
@@ -66,7 +66,7 @@ const RoomSection: React.FC<RoomSectionProps> = memo(({ room, index }) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 60%',
+          start: 'top 85%', // Trigger content earlier
           toggleActions: 'play none none reverse',
         },
       });
@@ -177,7 +177,7 @@ const RoomSection: React.FC<RoomSectionProps> = memo(({ room, index }) => {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="room-section__image"
-                loading="lazy"
+                priority={index <= 1}
               />
             </div>
             <div className="room-section__image-overlay" />
